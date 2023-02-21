@@ -64,26 +64,26 @@ pageEncoding="UTF-8"%>
 
               <div class="form-control bg-warning mb-3">
                 <form:label path="expense">Expense:</form:label>
-                <form:errors path="expense"></form:errors>
-                <form:input path="expense"></form:input>
+                <form:errors path="expense"/>
+                <form:input path="expense"/>
               </div>
 
               <div class="form-control bg-warning mb-3">
                 <form:label path="vendor">Vendor:</form:label>
-                <form:errors path="vendor"></form:errors>
-                <form:input path="vendor"></form:input>
+                <form:errors path="vendor"/>
+                <form:input path="vendor"/>
               </div>
 
               <div class="form-control bg-warning mb-3">
                 <form:label path="amount">Amount:</form:label>
-                <form:errors path="amount"></form:errors>
-                <form:input path="amount"></form:input>
+                <form:errors path="amount"/>
+                <form:input path="amount"/>
               </div>
 
               <div class="form-control bg-warning mb-3">
                 <form:label path="description">Description:</form:label>
-                <form:errors path="description"></form:errors>
-                <form:input path="description"></form:input>
+                <form:errors path="description"/>
+                <form:input path="description"/>
               </div>
 
               <input class="btn btn-dark text-light mt-3" type="submit" value="create travel">

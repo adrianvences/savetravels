@@ -36,6 +36,7 @@ public class MainController {
   @PostMapping("/travels")
   public String create(@Valid @ModelAttribute("travel") Travel travel, BindingResult result){
     if(result.hasErrors()){
+      System.out.println("we are here");
       return "index.jsp";
     } else {
       travelService.createTravel(travel);

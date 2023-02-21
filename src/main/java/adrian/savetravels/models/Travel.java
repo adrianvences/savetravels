@@ -1,14 +1,19 @@
 package adrian.savetravels.models;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,18 +25,24 @@ public class Travel {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotNull
+  @NotBlank // use not blank instead 
+  // (message="must not be blank")
+  // @Size(min=1, max=100 , message = "must not be blank")
   private String expense;
 
   @NotNull
+  @Size(min=1, max=100 , message = "must not be blankkkk")
   private String vendor;
 
   @NotNull
-  // @Size(min=1,max=5, message="thats not really your name!")
-  private Integer Amount;
+  
+  @Min(0)
+  // @Max(1000)
+  private Integer amount;
 
   @NotNull
-  private String Description;
+  @Size(min=1, max=100 , message = "must not be blank")
+  private String description;
 
     // this will not allow the createdAt column to be updated after creation
     @Column(updatable = false)
@@ -39,6 +50,15 @@ public class Travel {
     private Date createdAt;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
+
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
 
 
    // Empty constructor
@@ -51,12 +71,6 @@ public class Travel {
 
 
 
-  public Travel(Long id, String expense, String vendor, Integer Amount, String Description, Date createdAt, Date updatedAt) {
-    this.expense = expense;
-    this.vendor = vendor;
-    this.Amount = Amount;
-    this.Description = Description;
-  }
 
     // Getters and Setters
   
@@ -85,21 +99,23 @@ public class Travel {
     this.vendor = vendor;
   }
 
+
   public Integer getAmount() {
-    return this.Amount;
+    return this.amount;
   }
 
-  public void setAmount(Integer Amount) {
-    this.Amount = Amount;
+  public void setAmount(Integer amount) {
+    this.amount = amount;
   }
 
   public String getDescription() {
-    return this.Description;
+    return this.description;
   }
 
-  public void setDescription(String Description) {
-    this.Description = Description;
+  public void setDescription(String description) {
+    this.description = description;
   }
+
 
   public Date getCreatedAt() {
     return this.createdAt;
@@ -116,6 +132,8 @@ public class Travel {
   public void setUpdatedAt(Date updatedAt) {
     this.updatedAt = updatedAt;
   }
+
+
 
 
 

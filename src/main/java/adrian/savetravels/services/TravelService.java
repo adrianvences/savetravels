@@ -12,7 +12,7 @@ import adrian.savetravels.repositories.TravelRepository;
 @Service
 public class TravelService {
 
-  @Autowired TravelRepository travelRepository;
+  @Autowired TravelRepository travelRepository; // dep injection
   
   //read all
   public List<Travel> getAllBurgers(){
